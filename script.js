@@ -62,7 +62,8 @@ const storeCatalog = [
     image: "assets/images/blue.jpg",
     description: "Yatora Yaguchi is a popular highschool student that excels in school but he doesn't have any passion in his life. He eventually sees a beautiful painting that inspires him. He finds a new passion in art and tries to become an artist.",
     inStock: true
-  }, {
+  }, 
+  {
     id: "prod-08",
     name: "Komi Can't Communicate",
     starRating: 4,
@@ -124,6 +125,10 @@ const storeCatalog = [
 // }
 
 // displayProducts(storeCatalog);
+
+
+
+
 let grid = document.getElementById('product-grid');
 grid.classList.add('grid');
 storeCatalog.forEach((product) => {
@@ -136,14 +141,32 @@ storeCatalog.forEach((product) => {
   h2.classList.add('card-title');
   h2.textContent = product.name;
   let h4 = document.createElement('h4');
-  h4.innerHTML = product.starRating.map(star => )
-  // h4.textContent = product.starRating;
+  h4.classList.add('star-rating');
+  
+  h4.innerHTML = 'Star Rating: ';
+
+  console.log(storeCatalog.length)
+
+  // for (let x = 0; x <= storeCatalog.length; x++) {
+    
+  //   // for (let y = 0; y <= product.starRating; y++) {
+  //   //   console.log(y);
+  //   //   console.log(product.starRating);
+  //   //   h4.innerHTML += '<i class="fa-solid fa-star"></i>';
+      
+  //   // }
+  // }
   let p = document.createElement('p');
 
   p.textContent = product.description;
   let p2 = document.createElement('p');
-  p2.textContent = product.price;
+  p2.textContent = "Price: $"+product.price;
+  const a =  document.createElement('a');
+  a.id = 'view';
+  a.classList.add('.btn.btn-primary.active');
+  a.innerHTML = 'Quick View';
 
-  div.append(img,h2,h4,p,p2);
+  div.append(img, h2, h4, p, p2,a);
   grid.append(div);
 });
+
