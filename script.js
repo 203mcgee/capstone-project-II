@@ -145,17 +145,12 @@ storeCatalog.forEach((product) => {
   
   h4.innerHTML = 'Star Rating: ';
 
-  console.log(storeCatalog.length)
 
-  // for (let x = 0; x <= storeCatalog.length; x++) {
-    
-  //   // for (let y = 0; y <= product.starRating; y++) {
-  //   //   console.log(y);
-  //   //   console.log(product.starRating);
-  //   //   h4.innerHTML += '<i class="fa-solid fa-star"></i>';
-      
-  //   // }
-  // }
+  for (let x = 0; x < product.starRating; x++)
+  {
+    h4.innerHTML  += '<i class="fa-solid fa-star"></i> '
+  }
+  
   let p = document.createElement('p');
 
   p.textContent = product.description;
