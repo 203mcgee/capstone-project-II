@@ -3,6 +3,7 @@ const storeCatalog = [
   {
     id: "prod-01",
     name: "My Hero Academia",
+    demographic: "shounen",
     starRating: 4,
     price: 9.99,
     image: "assets/images/download.jpg",
@@ -12,6 +13,7 @@ const storeCatalog = [
   {
     id: "prod-02",
     name: "Fruits Basket",
+    demographic:"shoujo" ,
     starRating: 5,
     price: 9.99,
     image: "assets/images/Fruitsbasket.jpg",
@@ -21,6 +23,7 @@ const storeCatalog = [
   {
     id: "prod-03",
     name: "Hunter x Hunter",
+    demographic:"shounen" ,
     starRating: 5,
     price: 9.99,
     image: "assets/images/hunter.jpg",
@@ -30,6 +33,7 @@ const storeCatalog = [
   {
     id: "prod-04",
     name: "Cheeky Brat",
+    demographic:"shoujo" ,
     starRating: 4,
     price: 11.99,
     image: "assets/images/cheeky.jpg",
@@ -39,6 +43,7 @@ const storeCatalog = [
   {
     id: "prod-05",
     name: "Nana",
+    demographic:"josei" ,
     starRating: 5,
     price: 13.99,
     image: "assets/images/nana.jpg",
@@ -48,6 +53,7 @@ const storeCatalog = [
   {
     id: "prod-06",
     name: "Berserk",
+    demographic: "seinen" ,
     starRating: 5,
     price: 20.99,
     image: "assets/images/berserk.jpg",
@@ -57,6 +63,7 @@ const storeCatalog = [
   {
     id: "prod-07",
     name: "Blue Period",
+    demographic:"seinen" ,
     starRating: 5,
     price: 12.99,
     image: "assets/images/blue.jpg",
@@ -66,6 +73,7 @@ const storeCatalog = [
   {
     id: "prod-08",
     name: "Komi Can't Communicate",
+    demographic:"shounen" ,
     starRating: 4,
     price: 9.99,
     image: "assets/images/komi.jpg",
@@ -75,6 +83,7 @@ const storeCatalog = [
   {
     id: "prod-09",
     name: "Spy X Family",
+    demographic:"shounen" ,
     starRating: 5,
     price: 9.99,
     image: "assets/images/spyxfmaily.jpg",
@@ -128,18 +137,24 @@ const storeCatalog = [
 
 
 
-
+// Made this grid to push all the elements into
 let grid = document.getElementById('product-grid');
 grid.classList.add('grid');
+
+// Made this for each to be able to get into the array and access the objects
 storeCatalog.forEach((product) => {
+
   let div = document.createElement('div');
   div.classList.add('card');
+
   let img = document.createElement('img');
   img.classList.add('sel-img');
   img.src = product.image;
+
   let h2 = document.createElement('h2');
   h2.classList.add('card-title');
   h2.textContent = product.name;
+
   let h4 = document.createElement('h4');
   h4.classList.add('star-rating');
   
@@ -155,7 +170,8 @@ storeCatalog.forEach((product) => {
 
   p.textContent = product.description;
   let p2 = document.createElement('p');
-  p2.textContent = "Price: $"+product.price;
+  p2.textContent = "Price: $"+ product.price;
+
   const a =  document.createElement('a');
   a.id = 'view';
   a.classList.add('.btn.btn-primary.active');
@@ -164,4 +180,21 @@ storeCatalog.forEach((product) => {
   div.append(img, h2, h4, p, p2,a);
   grid.append(div);
 });
+
+
+// Working on the filter
+const filterPriceCheap = storeCatalog.filter((cheap) => cheap.price < 10);
+const filterPriceExpensive = storeCatalog.filter((expensive) => expensive.price >= 10);
+const isThisShounen = storeCatalog.filter((demo) => demo.demographic === 'shounen');
+const isThisShoujo = storeCatalog.filter((demo) => demo.demographic === 'shoujo');
+const isThisJosei = storeCatalog.filter((demo) => demo.demographic === 'josei');
+const isThisSeinen = storeCatalog.filter((demo) => demo.demographic === 'seinen');
+console.log(isThisShounen);
+console.log(isThisShoujo);
+console.log(isThisJosei);
+console.log(isThisSeinen);
+console.log(filterPriceCheap);
+console.log(filterPriceExpensive);
+
+
 

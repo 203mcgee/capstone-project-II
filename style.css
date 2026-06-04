@@ -229,12 +229,24 @@ a:active {
 .selection {
   display: flex;
   margin: auto;
+  padding: 10px;
 }
 
 .selection-header {
   text-align: center;
   border-bottom: 2px solid black;
 }
+
+
+.filter{
+  position: absolute; /* Takes the div out of normal layout flow */
+  top: 5;
+  left: 0;
+  z-index: 10;
+  /* padding: 15px;
+  gap: 50px;  */
+}
+
 
 .grid {
   display: grid;
