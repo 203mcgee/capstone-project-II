@@ -13,7 +13,7 @@ const storeCatalog = [
   {
     id: "prod-02",
     name: "Fruits Basket",
-    demographic:"shoujo" ,
+    demographic: "shoujo",
     starRating: 5,
     price: 9.99,
     image: "assets/images/Fruitsbasket.jpg",
@@ -23,7 +23,7 @@ const storeCatalog = [
   {
     id: "prod-03",
     name: "Hunter x Hunter",
-    demographic:"shounen" ,
+    demographic: "shounen",
     starRating: 5,
     price: 9.99,
     image: "assets/images/hunter.jpg",
@@ -33,7 +33,7 @@ const storeCatalog = [
   {
     id: "prod-04",
     name: "Cheeky Brat",
-    demographic:"shoujo" ,
+    demographic: "shoujo",
     starRating: 4,
     price: 11.99,
     image: "assets/images/cheeky.jpg",
@@ -43,7 +43,7 @@ const storeCatalog = [
   {
     id: "prod-05",
     name: "Nana",
-    demographic:"josei" ,
+    demographic: "josei",
     starRating: 5,
     price: 13.99,
     image: "assets/images/nana.jpg",
@@ -53,7 +53,7 @@ const storeCatalog = [
   {
     id: "prod-06",
     name: "Berserk",
-    demographic: "seinen" ,
+    demographic: "seinen",
     starRating: 5,
     price: 20.99,
     image: "assets/images/berserk.jpg",
@@ -63,17 +63,17 @@ const storeCatalog = [
   {
     id: "prod-07",
     name: "Blue Period",
-    demographic:"seinen" ,
+    demographic: "seinen",
     starRating: 5,
     price: 12.99,
     image: "assets/images/blue.jpg",
     description: "Yatora Yaguchi is a popular highschool student that excels in school but he doesn't have any passion in his life. He eventually sees a beautiful painting that inspires him. He finds a new passion in art and tries to become an artist.",
     inStock: true
-  }, 
+  },
   {
     id: "prod-08",
     name: "Komi Can't Communicate",
-    demographic:"shounen" ,
+    demographic: "shounen",
     starRating: 4,
     price: 9.99,
     image: "assets/images/komi.jpg",
@@ -83,7 +83,7 @@ const storeCatalog = [
   {
     id: "prod-09",
     name: "Spy X Family",
-    demographic:"shounen" ,
+    demographic: "shounen",
     starRating: 5,
     price: 9.99,
     image: "assets/images/spyxfmaily.jpg",
@@ -112,24 +112,47 @@ const storeCatalog = [
 
 
 // https://medium.com/@jenniferehodge1/create-cards-dynamicallyin-javascript-ac46c5eb2296
-// function displayProducts(...products){
+
+
+// function displayProducts(...products) {
 //   let grid = document.getElementById('product-grid');
-//   products.forEach((product)=>{
+//   grid.classList.add('grid');
+//   products.forEach((product) => {
+
 //     let div = document.createElement('div');
 //     div.classList.add('card');
+
 //     let img = document.createElement('img');
+//     img.classList.add('sel-img');
 //     img.src = product.image;
+
 //     let h2 = document.createElement('h2');
+//     h2.classList.add('card-title');
 //     h2.textContent = product.name;
+
 //     let h4 = document.createElement('h4');
-//     h4.textContent = product.starRating;
+//     h4.classList.add('star-rating');
+
+//     h4.innerHTML = 'Star Rating: ';
+
+
+//     for (let x = 0; x < product.starRating; x++) {
+//       h4.innerHTML += '<i class="fa-solid fa-star"></i> '
+//     }
+
 //     let p = document.createElement('p');
+
 //     p.textContent = product.description;
 //     let p2 = document.createElement('p');
-//     p2.textContent = product.price;
+//     p2.textContent = "Price: $" + product.price;
 
-//    grid.append(product); // this is works somehow
+//     const a = document.createElement('a');
+//     a.id = 'view';
+//     a.classList.add('.btn.btn-primary.active');
+//     a.innerHTML = 'Quick View';
 
+//     div.append(img, h2, h4, p, p2, a);
+//     grid.append(div);
 //   });
 // }
 
@@ -157,29 +180,31 @@ storeCatalog.forEach((product) => {
 
   let h4 = document.createElement('h4');
   h4.classList.add('star-rating');
-  
+
   h4.innerHTML = 'Star Rating: ';
 
 
-  for (let x = 0; x < product.starRating; x++)
-  {
-    h4.innerHTML  += '<i class="fa-solid fa-star"></i> '
+  for (let x = 0; x < product.starRating; x++) {
+    h4.innerHTML += '<i class="fa-solid fa-star"></i> '
   }
-  
+
   let p = document.createElement('p');
 
   p.textContent = product.description;
   let p2 = document.createElement('p');
-  p2.textContent = "Price: $"+ product.price;
+  p2.textContent = "Price: $" + product.price;
 
-  const a =  document.createElement('a');
+  const a = document.createElement('a');
   a.id = 'view';
   a.classList.add('.btn.btn-primary.active');
   a.innerHTML = 'Quick View';
 
-  div.append(img, h2, h4, p, p2,a);
+  div.append(img, h2, h4, p, p2, a);
   grid.append(div);
 });
+
+
+
 
 
 // Working on the filter
@@ -196,5 +221,236 @@ console.log(isThisSeinen);
 console.log(filterPriceCheap);
 console.log(filterPriceExpensive);
 
+// Adding the DOM Manipulation
+const showAll = document.getElementById('all');
+const showShounen = document.getElementById('shounen');
+const showShoujo = document.getElementById('shoujo');
+const showSeinen = document.getElementById('seinen');
+const showJosei = document.getElementById('josei');
 
+showAll.addEventListener('click', function () {
+
+  grid.innerHTML = "";
+
+  storeCatalog.forEach((product) => {
+
+    let div = document.createElement('div');
+    div.classList.add('card');
+
+    let img = document.createElement('img');
+    img.classList.add('sel-img');
+    img.src = product.image;
+
+    let h2 = document.createElement('h2');
+    h2.classList.add('card-title');
+    h2.textContent = product.name;
+
+    let h4 = document.createElement('h4');
+    h4.classList.add('star-rating');
+
+    h4.innerHTML = 'Star Rating: ';
+
+
+    for (let x = 0; x < product.starRating; x++) {
+      h4.innerHTML += '<i class="fa-solid fa-star"></i> '
+    }
+
+    let p = document.createElement('p');
+
+    p.textContent = product.description;
+    let p2 = document.createElement('p');
+    p2.textContent = "Price: $" + product.price;
+
+    const a = document.createElement('a');
+    a.id = 'view';
+    a.classList.add('.btn.btn-primary.active');
+    a.innerHTML = 'Quick View';
+
+    div.append(img, h2, h4, p, p2, a);
+    grid.append(div);
+  });
+})
+
+showShounen.addEventListener('click', () => {
+  grid.innerHTML = "";
+  if(isThisShounen === 0)
+  {
+    console.log("We don't have any shounen series");
+  }
+
+  isThisShounen.forEach((product) =>{
+    let div = document.createElement('div');
+    div.classList.add('card');
+
+    let img = document.createElement('img');
+    img.classList.add('sel-img');
+    img.src = product.image;
+
+    let h2 = document.createElement('h2');
+    h2.classList.add('card-title');
+    h2.textContent = product.name;
+
+    let h4 = document.createElement('h4');
+    h4.classList.add('star-rating');
+
+    h4.innerHTML = 'Star Rating: ';
+
+
+    for (let x = 0; x < product.starRating; x++) {
+      h4.innerHTML += '<i class="fa-solid fa-star"></i> '
+    }
+
+    let p = document.createElement('p');
+
+    p.textContent = product.description;
+    let p2 = document.createElement('p');
+    p2.textContent = "Price: $" + product.price;
+
+    const a = document.createElement('a');
+    a.id = 'view';
+    a.classList.add('.btn.btn-primary.active');
+    a.innerHTML = 'Quick View';
+
+    div.append(img, h2, h4, p, p2, a);
+    grid.append(div);
+  });
+})
+showShoujo.addEventListener('click', () => {
+  grid.innerHTML = "";
+
+  
+  if(isThisShoujo === 0)
+  {
+    console.log("We don't have any shounen series");
+  }
+
+  isThisShoujo.forEach((product) =>{
+    let div = document.createElement('div');
+    div.classList.add('card');
+
+    let img = document.createElement('img');
+    img.classList.add('sel-img');
+    img.src = product.image;
+
+    let h2 = document.createElement('h2');
+    h2.classList.add('card-title');
+    h2.textContent = product.name;
+
+    let h4 = document.createElement('h4');
+    h4.classList.add('star-rating');
+
+    h4.innerHTML = 'Star Rating: ';
+
+
+    for (let x = 0; x < product.starRating; x++) {
+      h4.innerHTML += '<i class="fa-solid fa-star"></i> '
+    }
+
+    let p = document.createElement('p');
+
+    p.textContent = product.description;
+    let p2 = document.createElement('p');
+    p2.textContent = "Price: $" + product.price;
+
+    const a = document.createElement('a');
+    a.id = 'view';
+    a.classList.add('.btn.btn-primary.active');
+    a.innerHTML = 'Quick View';
+
+    div.append(img, h2, h4, p, p2, a);
+    grid.append(div);
+  });
+})
+showSeinen.addEventListener('click', () => {
+  grid.innerHTML = "";
+
+
+  if(isThisSeinen === 0)
+  {
+    console.log("We don't have any shounen series");
+  }
+
+  isThisSeinen.forEach((product) =>{
+    let div = document.createElement('div');
+    div.classList.add('card');
+
+    let img = document.createElement('img');
+    img.classList.add('sel-img');
+    img.src = product.image;
+
+    let h2 = document.createElement('h2');
+    h2.classList.add('card-title');
+    h2.textContent = product.name;
+
+    let h4 = document.createElement('h4');
+    h4.classList.add('star-rating');
+
+    h4.innerHTML = 'Star Rating: ';
+
+
+    for (let x = 0; x < product.starRating; x++) {
+      h4.innerHTML += '<i class="fa-solid fa-star"></i> '
+    }
+
+    let p = document.createElement('p');
+
+    p.textContent = product.description;
+    let p2 = document.createElement('p');
+    p2.textContent = "Price: $" + product.price;
+
+    const a = document.createElement('a');
+    a.id = 'view';
+    a.classList.add('.btn.btn-primary.active');
+    a.innerHTML = 'Quick View';
+
+    div.append(img, h2, h4, p, p2, a);
+    grid.append(div);
+  });
+})
+showJosei.addEventListener('click', () => {
+  grid.innerHTML = "";
+
+
+  if(isThisJosei === 0)
+  {
+    console.log("We don't have any shounen series");
+  }
+
+  isThisJosei.forEach((product) =>{
+    let div = document.createElement('div');
+    div.classList.add('card');
+
+    let img = document.createElement('img');
+    img.classList.add('sel-img');
+    img.src = product.image;
+
+    let h2 = document.createElement('h2');
+    h2.classList.add('card-title');
+    h2.textContent = product.name;
+
+    let h4 = document.createElement('h4');
+    h4.classList.add('star-rating');
+
+    h4.innerHTML = 'Star Rating: ';
+
+
+    for (let x = 0; x < product.starRating; x++) {
+      h4.innerHTML += '<i class="fa-solid fa-star"></i> '
+    }
+
+    let p = document.createElement('p');
+
+    p.textContent = product.description;
+    let p2 = document.createElement('p');
+    p2.textContent = "Price: $" + product.price;
+
+    const a = document.createElement('a');
+    a.id = 'view';
+    a.classList.add('.btn.btn-primary.active');
+    a.innerHTML = 'Quick View';
+
+    div.append(img, h2, h4, p, p2, a);
+    grid.append(div);
+  });
+})
 
