@@ -15,7 +15,7 @@ const storeCatalog = [
     name: "Fruits Basket",
     demographic: "shoujo",
     starRating: 5,
-    price: 9.99,
+    price: 12.99,
     image: "assets/images/Fruitsbasket.jpg",
     description: "Tohru is a girl that is living in a tent. The Soma family learns that she lives in the tent and invite her in their home. She finds out their secret that can turn into animals when hug by the opposite sex.",
     inStock: true
@@ -94,69 +94,11 @@ const storeCatalog = [
 
 ];
 
-//  <div class="card">
-//                 <img class="sel-img" src="./assets/images/spyxfmaily.jpg" alt="A Picture of SpyXFamily Manga">
-//                 <h2 class="card-title">Spy X Family</h2>
-//                 <h4 class="star-rating">Star Rating: <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i>
-//                     <i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i>
-//                 </h4>
-//                 <p class="card-description">A spy name Twilight is assigned a misson to stop another nation from
-//                     starting a war. In able to
-//                     stop
-//                     the war, he has to get close to one of the prime ministers and only way to do is make a family.
-//                 </p>
-//                 <p class="price">Price: $9.99 </p>
-//                //? <a id="view" class="btn btn-primary active" href="#" role="button">Quick View</a>
-//             </div>
 
 
 // https://medium.com/@jenniferehodge1/create-cards-dynamicallyin-javascript-ac46c5eb2296
 
 
-// function displayProducts(...products) {
-//   let grid = document.getElementById('product-grid');
-//   grid.classList.add('grid');
-//   products.forEach((product) => {
-
-//     let div = document.createElement('div');
-//     div.classList.add('card');
-
-//     let img = document.createElement('img');
-//     img.classList.add('sel-img');
-//     img.src = product.image;
-
-//     let h2 = document.createElement('h2');
-//     h2.classList.add('card-title');
-//     h2.textContent = product.name;
-
-//     let h4 = document.createElement('h4');
-//     h4.classList.add('star-rating');
-
-//     h4.innerHTML = 'Star Rating: ';
-
-
-//     for (let x = 0; x < product.starRating; x++) {
-//       h4.innerHTML += '<i class="fa-solid fa-star"></i> '
-//     }
-
-//     let p = document.createElement('p');
-
-//     p.textContent = product.description;
-//     let p2 = document.createElement('p');
-//     p2.textContent = "Price: $" + product.price;
-
-//     const a = document.createElement('a');
-//     a.id = 'view';
-//     a.classList.add('.btn.btn-primary.active');
-//     a.innerHTML = 'Quick View';
-
-//     div.append(img, h2, h4, p, p2, a);
-//     grid.append(div);
-//   });
-// }
-
-// displayProducts(storeCatalog);
 
 
 
@@ -196,7 +138,8 @@ storeCatalog.forEach((product) => {
 
   const a = document.createElement('a');
   a.id = 'view';
-  a.classList.add('.btn.btn-primary.active');
+  a.setAttribute('data-id', product.id);
+  a.classList.add('btn', 'btn-primary', 'active', 'view-btn');
   a.innerHTML = 'Quick View';
 
   div.append(img, h2, h4, p, p2, a);
@@ -273,12 +216,11 @@ showAll.addEventListener('click', function () {
 
 showShounen.addEventListener('click', () => {
   grid.innerHTML = "";
-  if(isThisShounen === 0)
-  {
+  if (isThisShounen === 0) {
     console.log("We don't have any shounen series");
   }
 
-  isThisShounen.forEach((product) =>{
+  isThisShounen.forEach((product) => {
     let div = document.createElement('div');
     div.classList.add('card');
 
@@ -315,16 +257,16 @@ showShounen.addEventListener('click', () => {
     grid.append(div);
   });
 })
+
 showShoujo.addEventListener('click', () => {
   grid.innerHTML = "";
 
-  
-  if(isThisShoujo === 0)
-  {
-    console.log("We don't have any shounen series");
+
+  if (isThisShoujo === 0) {
+    console.log("We don't have any shoujo series");
   }
 
-  isThisShoujo.forEach((product) =>{
+  isThisShoujo.forEach((product) => {
     let div = document.createElement('div');
     div.classList.add('card');
 
@@ -361,16 +303,16 @@ showShoujo.addEventListener('click', () => {
     grid.append(div);
   });
 })
+
 showSeinen.addEventListener('click', () => {
   grid.innerHTML = "";
 
 
-  if(isThisSeinen === 0)
-  {
-    console.log("We don't have any shounen series");
+  if (isThisSeinen === 0) {
+    console.log("We don't have any seinen series");
   }
 
-  isThisSeinen.forEach((product) =>{
+  isThisSeinen.forEach((product) => {
     let div = document.createElement('div');
     div.classList.add('card');
 
@@ -411,12 +353,11 @@ showJosei.addEventListener('click', () => {
   grid.innerHTML = "";
 
 
-  if(isThisJosei === 0)
-  {
-    console.log("We don't have any shounen series");
+  if (isThisJosei === 0) {
+    console.log("We don't have any josei series");
   }
 
-  isThisJosei.forEach((product) =>{
+  isThisJosei.forEach((product) => {
     let div = document.createElement('div');
     div.classList.add('card');
 
@@ -454,3 +395,50 @@ showJosei.addEventListener('click', () => {
   });
 })
 
+
+Object.keys(buttons).forEach(id => {
+  document.getElementById(id).addEventListener('click', () => {
+    renderGrid(buttons[id]);
+  });
+});
+
+// Making Something for the Quick View
+
+const modalCatalog = [
+  {
+    title: "My Hero Academia",
+    rating: "PG-13",
+    isOngoing: false
+  },
+  {
+    title: "Fruits Basket",
+    rating: "PG-13",
+    isOngoing: false
+  },
+  {
+    title: "Hunter x Hunter",
+    rating: "PG-13",
+    isOngoing: true
+  },
+]
+
+
+
+
+
+let modal = document.getElementsByClassName('quick'); 
+
+a.addEventListener('click',function(){
+  modal.style.display = 'flex';
+})
+
+
+window.addEventListener('click',function(e){
+  if(e.target === modal)
+  {
+    modal.style.display = 'none';
+  }
+})
+
+
+// LocalStorage Synchronization
