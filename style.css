@@ -298,15 +298,20 @@ a:active {
 }
 
 .quick {
-  display: none; /* Hidden by default */
-  position: fixed; 
-  z-index: 1000; 
-  left: 0;
+  display: none;        /* Initial state hidden */
+  position: fixed;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  background-color: rgba(0,0,0,0.5); /* Dim background */
-  padding: 50px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* Translucent backdrop overlay tint */
+  z-index: 9999;
+  
+  /* Flexbox settings to cleanly center dynamic text injections */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;         /* Ensures readability against the dark overlay background */
 }
 
 #view:hover{

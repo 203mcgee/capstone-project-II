@@ -94,6 +94,18 @@ const storeCatalog = [
 
 ];
 
+const modalCatalog = 
+  [{id:"prod-01", title: "My Hero Academia", rating: "PG-13", isOngoing: false },
+  {id:"prod-02", title: "Fruits Basket", rating: "PG-13", isOngoing: false },
+  {id:"prod-03", title: "Hunter x Hunter", rating: "PG-13", isOngoing: true },
+  {id:"prod-04", title: "Cheeky Brat", rating: "PG-13", isOngoing: false },
+  {id:"prod-05", title: "Nana", rating: "R-17", isOngoing: false },
+  {id:"prod-06", title: "Berserk", rating: "R-18+", isOngoing: false },
+  {id:"prod-07", title: "Blue Period", rating: "PG-13", isOngoing: true },
+  {id:"prod-08", title: "Komi Can't Communicate", rating: "PG-13", isOngoing: true },
+  {id:"prod-09", title: "Spy X Family", rating: "PG-13", isOngoing: true }
+]
+
 
 
 // https://medium.com/@jenniferehodge1/create-cards-dynamicallyin-javascript-ac46c5eb2296
@@ -105,6 +117,7 @@ const storeCatalog = [
 // Made this grid to push all the elements into
 let grid = document.getElementById('product-grid');
 grid.classList.add('grid');
+
 
 // Made this for each to be able to get into the array and access the objects
 storeCatalog.forEach((product) => {
@@ -136,11 +149,85 @@ storeCatalog.forEach((product) => {
   let p2 = document.createElement('p');
   p2.textContent = "Price: $" + product.price;
 
-  const a = document.createElement('a');
+  
+  
+  const a = document.createElement('button');
+  
   a.id = 'view';
   a.setAttribute('data-id', product.id);
   a.classList.add('btn', 'btn-primary', 'active', 'view-btn');
   a.innerHTML = 'Quick View';
+
+  // Modal is not working
+  a.addEventListener('click', function(){
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    overlay.style.display = 'flex';
+    overlay.style.justifyContent = 'center';
+    overlay.style.alignItems = 'center';
+    overlay.style.zIndex = '1000';
+
+    const modal = document.createElement('div');
+    modal.style.backgroundColor = '#fff';
+    modal.style.padding = '30px';
+    modal.style.borderRadius = '10px';
+    modal.style.textAlign = 'center';
+    modal.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+    modal.style.maxWidth = '400px';
+    modal.style.width = '100%';
+
+    modalCatalog.forEach((minfo) => {
+      let name = document.createElement('h2');
+      let rating = document.createElement('p');
+      let onGoing = document.createElement('p');
+      if(minfo.id === product.id)
+      {
+        name.textContent = "Title: "+minfo.title;
+        rating.textContent = "Rating: "+minfo.rating;
+        onGoing.textContent = minfo.isOngoing === false ? `${minfo.id}: ${minfo.title} is completed` : `${minfo.id}: ${minfo.title} is still ongoing`;
+      }
+
+      modal.append(name,rating,onGoing);
+      
+    });
+
+    const closeBtn = document.createElement('button');
+    closeBtn.innerText = 'X';
+    closeBtn.style.marginTop = '20px';
+    closeBtn.style.padding = '10px 20px';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.backgroundColor = '#f44336';
+    closeBtn.style.color = 'white';
+    closeBtn.style.border = 'none';
+    closeBtn.style.borderRadius = '5px';
+
+
+    closeBtn.addEventListener('click', function(){
+      document.body.removeChild(overlay);
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if(e.overlay === overlay)
+      {
+        document.body.removeChild(overlay);
+      }
+    });
+
+    // modal.appendChild();
+    modal.appendChild(closeBtn);
+    overlay.appendChild(modal);
+
+    document.body.appendChild(overlay);
+    
+
+
+  });
+ 
 
   div.append(img, h2, h4, p, p2, a);
   grid.append(div);
@@ -206,8 +293,77 @@ showAll.addEventListener('click', function () {
 
     const a = document.createElement('a');
     a.id = 'view';
-    a.classList.add('.btn.btn-primary.active');
+    a.classList.add('btn', 'btn-primary', 'active', 'view-btn');
     a.innerHTML = 'Quick View';
+    a.addEventListener('click', function(){
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100vw';
+    overlay.style.height = '100vh';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
+    overlay.style.display = 'flex';
+    overlay.style.justifyContent = 'center';
+    overlay.style.alignItems = 'center';
+    overlay.style.zIndex = '1000';
+
+    const modal = document.createElement('div');
+    modal.style.backgroundColor = '#fff';
+    modal.style.padding = '30px';
+    modal.style.borderRadius = '10px';
+    modal.style.textAlign = 'center';
+    modal.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+    modal.style.maxWidth = '400px';
+    modal.style.width = '100%';
+
+    modalCatalog.forEach((minfo) => {
+      let name = document.createElement('h2');
+      let rating = document.createElement('p');
+      let onGoing = document.createElement('p');
+      if(minfo.id === product.id)
+      {
+        name.textContent = "Title: "+ minfo.title;
+        rating.textContent = "Rating: "+ minfo.rating;
+        onGoing.textContent = minfo.isOngoing === false ? `${minfo.id}: ${minfo.title} is completed` : `${minfo.id}: ${minfo.title} is still ongoing`;
+      }
+
+      modal.append(name,rating,onGoing);
+      
+    });
+
+    const closeBtn = document.createElement('button');
+    closeBtn.innerText = 'X';
+    closeBtn.style.marginTop = '20px';
+    closeBtn.style.padding = '10px 20px';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.backgroundColor = '#f44336';
+    closeBtn.style.color = 'white';
+    closeBtn.style.border = 'none';
+    closeBtn.style.borderRadius = '5px';
+
+
+    closeBtn.addEventListener('click', function(){
+      document.body.removeChild(overlay);
+    });
+
+    overlay.addEventListener('click', (e) => {
+      if(e.overlay === overlay)
+      {
+        document.body.removeChild(overlay);
+      }
+    });
+
+    // modal.appendChild();
+    modal.appendChild(closeBtn);
+    overlay.appendChild(modal);
+
+    document.body.appendChild(overlay);
+    
+
+
+  });
+      
 
     div.append(img, h2, h4, p, p2, a);
     grid.append(div);
@@ -250,7 +406,7 @@ showShounen.addEventListener('click', () => {
 
     const a = document.createElement('a');
     a.id = 'view';
-    a.classList.add('.btn.btn-primary.active');
+    a.classList.add('btn', 'btn-primary', 'active', 'view-btn');
     a.innerHTML = 'Quick View';
 
     div.append(img, h2, h4, p, p2, a);
@@ -296,7 +452,7 @@ showShoujo.addEventListener('click', () => {
 
     const a = document.createElement('a');
     a.id = 'view';
-    a.classList.add('.btn.btn-primary.active');
+    a.classList.add('btn', 'btn-primary', 'active', 'view-btn');
     a.innerHTML = 'Quick View';
 
     div.append(img, h2, h4, p, p2, a);
@@ -342,7 +498,7 @@ showSeinen.addEventListener('click', () => {
 
     const a = document.createElement('a');
     a.id = 'view';
-    a.classList.add('.btn.btn-primary.active');
+    a.classList.add('btn', 'btn-primary', 'active', 'view-btn');
     a.innerHTML = 'Quick View';
 
     div.append(img, h2, h4, p, p2, a);
@@ -387,7 +543,8 @@ showJosei.addEventListener('click', () => {
 
     const a = document.createElement('a');
     a.id = 'view';
-    a.classList.add('.btn.btn-primary.active');
+    // a.classList.add('.btn.btn-primary.active');
+    a.classList.add('btn', 'btn-primary', 'active', 'view-btn')
     a.innerHTML = 'Quick View';
 
     div.append(img, h2, h4, p, p2, a);
@@ -396,49 +553,171 @@ showJosei.addEventListener('click', () => {
 })
 
 
-Object.keys(buttons).forEach(id => {
-  document.getElementById(id).addEventListener('click', () => {
-    renderGrid(buttons[id]);
-  });
-});
-
 // Making Something for the Quick View
 
-const modalCatalog = [
-  {
-    title: "My Hero Academia",
-    rating: "PG-13",
-    isOngoing: false
-  },
-  {
-    title: "Fruits Basket",
-    rating: "PG-13",
-    isOngoing: false
-  },
-  {
-    title: "Hunter x Hunter",
-    rating: "PG-13",
-    isOngoing: true
-  },
-]
+
+
+
+// // --- 1. FILTER CONFIGURATION ---
+// const buttons = {
+//   all: storeCatalog,
+//   shounen: storeCatalog.filter((m) => m.demographic === 'shounen'),
+//   shoujo: storeCatalog.filter((m) => m.demographic === 'shoujo'),
+//   seinen: storeCatalog.filter((m) => m.demographic === 'seinen'),
+//   josei: storeCatalog.filter((m) => m.demographic === 'josei')
+// };
+
+// // --- 2. THE MAIN RENDER FUNCTION ---
+// // This handles creating the layout and matching data-id attributes cleanly
+// function renderGrid(products) {
+//   grid.innerHTML = "";
+
+//   if (products.length === 0) {
+//     console.log("No titles available for this category.");
+//     return;
+//   }
+
+//   products.forEach((product) => {
+//     let div = document.createElement('div');
+//     div.classList.add('card');
+
+//     let img = document.createElement('img');
+//     img.classList.add('sel-img');
+//     img.src = product.image;
+
+//     let h2 = document.createElement('h2');
+//     h2.classList.add('card-title');
+//     h2.textContent = product.name;
+
+//     let h4 = document.createElement('h4');
+//     h4.classList.add('star-rating');
+//     h4.innerHTML = 'Star Rating: ';
+//     for (let x = 0; x < product.starRating; x++) {
+//       h4.innerHTML += '<i class="fa-solid fa-star"></i> ';
+//     }
+
+//     let p = document.createElement('p');
+//     p.textContent = product.description;
+    
+//     let p2 = document.createElement('p');
+//     p2.textContent = "Price: $" + product.price;
+
+//     // Create the anchor element correctly
+//     const a = document.createElement('a');
+//     a.id = 'view';
+//     a.classList.add('btn', 'btn-primary', 'active', 'view-btn'); // No dot notation here
+//     a.setAttribute('data-id', product.id);                       // Attaches the unique ID to the anchor
+//     a.innerHTML = 'Quick View';
+
+//     div.append(img, h2, h4, p, p2, a);
+//     grid.append(div);
+//   });
+// }
+
+// // Bind click events to filter UI elements automatically
+// Object.keys(buttons).forEach((id) => {
+//   const btnElement = document.getElementById(id);
+//   if (btnElement) {
+//     btnElement.addEventListener('click', () => {
+//       renderGrid(buttons[id]);
+//     });
+//   }
+// });
+
+
+// // --- 3. MODAL METADATA ---
+// // Changed from an array to a keyed object so we can query it using product IDs directly
+// const modalCatalog = {
+//   "prod-01": { title: "My Hero Academia", rating: "PG-13", isOngoing: false },
+//   "prod-02": { title: "Fruits Basket", rating: "PG-13", isOngoing: false },
+//   "prod-03": { title: "Hunter x Hunter", rating: "PG-13", isOngoing: true },
+//   "prod-04": { title: "Cheeky Brat", rating: "PG-13", isOngoing: false },
+//   "prod-05": { title: "Nana", rating: "R-17", isOngoing: false },
+//   "prod-06": { title: "Berserk", rating: "R-18+", isOngoing: false },
+//   "prod-07": { title: "Blue Period", rating: "PG-13", isOngoing: true },
+//   "prod-08": { title: "Komi Can't Communicate", rating: "PG-13", isOngoing: true },
+//   "prod-09": { title: "Spy X Family", rating: "PG-13", isOngoing: true }
+// };
+
+
+// // --- 4. MODAL DISPLAY LOGIC ---
+// // FIXED: querySelector safely grabs the target window element
+// let modal = document.querySelector('.quick'); 
+
+// // EVENT DELEGATION: Listens to the parent container to trap clicks from inner elements
+// grid.addEventListener('click', function (e) {
+//   // Check if the clicked item is a Quick View anchor link
+//   if (e.target.classList.contains('view-btn')) {
+//     e.preventDefault(); // Prevents page jumping behavior from the link
+    
+//     const productId = e.target.getAttribute('data-id');
+//     const info = modalCatalog[productId];
+
+//     // Wipe previous modal DOM injections to avoid cascading text accumulation
+//     modal.innerHTML = ""; 
+
+//     if (info) {
+//       // let modalDiv = document.createElement('div');
+//       let modalTitle = document.createElement('h3');
+//       let modalAgeRating = document.createElement('p');
+//       let modalOngoing = document.createElement('p');
+
+//       modalTitle.textContent = `Title: ${info.title}`;
+//       modalAgeRating.textContent = `Age Rating: ${info.rating}`;
+//       modalOngoing.textContent = info.isOngoing ? 'This series is still ongoing' : 'This is no longer ongoing';
+
+//       modal.append(modalTitle, modalAgeRating, modalOngoing);
+//       modal.style.display = 'flex'; // Triggers your requested flex layout
+//     } else {
+//       modal.innerHTML = "<h3>No extra data found for this release.</h3>";
+//       modal.style.display = 'flex';
+//     }
+//   }
+// });
+
+// // Close modal when user clicks onto the outer backdrop masking region
+// window.addEventListener('click', function (e) {
+//   if (e.target === modal) {
+//     modal.style.display = 'none';
+//   }
+// });
+
+
+// const modalCatalog = [
+//   {
+//     title: "My Hero Academia",
+//     rating: "PG-13",
+//     isOngoing: false
+//   },
+//   {
+//     title: "Fruits Basket",
+//     rating: "PG-13",
+//     isOngoing: false
+//   },
+//   {
+//     title: "Hunter x Hunter",
+//     rating: "PG-13",
+//     isOngoing: true
+//   },
+// ]
 
 
 
 
 
-let modal = document.getElementsByClassName('quick'); 
+// let modal = document.getElementsByClassName('quick'); 
 
-a.addEventListener('click',function(){
-  modal.style.display = 'flex';
-})
+// a.addEventListener('click',function(){
+//   modal.style.display = 'flex';
+// })
 
 
-window.addEventListener('click',function(e){
-  if(e.target === modal)
-  {
-    modal.style.display = 'none';
-  }
-})
+// window.addEventListener('click',function(e){
+//   if(e.target === modal)
+//   {
+//     modal.style.display = 'none';
+//   }
+// })
 
 
 // LocalStorage Synchronization
