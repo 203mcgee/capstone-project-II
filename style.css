@@ -297,6 +297,13 @@ a:active {
   background-color: var(--logo-color);
 }
 
+.moreButtons{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 200px;
+}
+
 .quick {
   display: none;        /* Initial state hidden */
   position: fixed;
