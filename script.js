@@ -1,3 +1,5 @@
+// const { createElement } = require("react");
+
 // 05/26 I created the array to loop through the products 
 const storeCatalog = [
   {
@@ -107,7 +109,67 @@ const modalCatalog =
     { id: "prod-09", title: "Spy X Family", rating: "PG-13", isOngoing: true }
   ];
 
-let cart = [{}];
+
+//Cart data, user theme flags, or session logs successfully persist between browser refreshes by leveraging localStorage.setItem and data translation handling via JSON.stringify() / JSON.parse().
+
+// let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+function addToCart(product) {
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  cart.push(product);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+  const items = document.getElementById('items');
+  let listedItems = document.createElement('li');
+
+  listedItems = product;
+
+  items.appendChild(listedItems);
+
+
+  console.log("Added to cart:", product);
+  window.location.pathname = 'cart.html';
+}
+
+function updateCartUI() {
+  const itemsList = document.querySelector("#items");
+  if (!itemsList) return; // Guard clause in case element doesn't exist yet
+
+  const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // Clear out the old list first
+  itemsList.innerHTML = "";
+
+  if (currentCart.length === 0) {
+    itemsList.innerHTML = "<p>Cart is empty</p>";
+  } else {
+    currentCart.forEach(item => {
+      const div = document.createElement("div");
+      div.textContent = `${item.name} - $${item.price}`;
+      itemsList.appendChild(div);
+    });
+  }
+}
+
+// Intercept your original function to make sure the UI refreshes instantly when clicked
+function handleAddToCart(product) {
+  // 1. Get current cart from storage
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // 2. Push the new product into it
+  cart.push(product);
+
+  // 3. Save it back to localStorage
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  console.log("Added to cart, redirecting...");
+
+  // 4. Redirect the user to the cart page
+  window.location.href = "cart.html"; 
+}
+
+storeCatalog.forEach((product) => {})
 
 
 
@@ -229,8 +291,26 @@ storeCatalog.forEach((product) => {
 
 
   });
+  // Doing local storage
+  // const toCart = document.createElement('button');
+  // toCart.textContent = 'Add to Cart';
+
+  // toCart.addEventListener('click', function () {
+  //   addToCart(product);
+  // });
   const toCart = document.createElement('button');
   toCart.textContent = 'Add to Cart';
+  toCart.addEventListener('click', function () {
+    handleAddToCart(product);
+    
+     // Call our updated state management function
+
+  });
+
+
+
+
+
   const container = document.createElement('div');
   container.append(toCart, a)
 

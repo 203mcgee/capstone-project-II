@@ -422,6 +422,18 @@ input[type="submit"]:hover {
   text-decoration: none;
 }
 
+/* Cart Page */
+.cart{
+  border: 2px solid black;
+}
+.inCart{
+  border: 2px solid black;
+}
+.items{
+  display: block;
+  flex-direction: row;
+}
+
 /* ----------------------------------------------------------------------------------------------- */
 
 /* Web Responsivness*/
