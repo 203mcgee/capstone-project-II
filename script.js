@@ -191,7 +191,7 @@ storeCatalog.forEach((product) => {
   div.classList.add('card');
 
   let img = document.createElement('img');
-  img.classList.add('sel-img');
+  img.classList.add('otherImg');
   img.src = product.image;
 
   let h2 = document.createElement('h2');
@@ -262,7 +262,7 @@ storeCatalog.forEach((product) => {
     });
 
     const closeBtn = document.createElement('button');
-    closeBtn.innerText = 'X';
+    closeBtn.innerText = 'close';
     closeBtn.style.marginTop = '20px';
     closeBtn.style.padding = '10px 20px';
     closeBtn.style.cursor = 'pointer';
@@ -299,6 +299,7 @@ storeCatalog.forEach((product) => {
   //   addToCart(product);
   // });
   const toCart = document.createElement('button');
+  toCart.classList.add('toCartBtn');
   toCart.textContent = 'Add to Cart';
   toCart.addEventListener('click', function () {
     handleAddToCart(product);
@@ -356,6 +357,7 @@ showAll.addEventListener('click', function () {
 
     let img = document.createElement('img');
     img.classList.add('sel-img');
+    // img.classList.add('otherImg');
     img.src = product.image;
 
     let h2 = document.createElement('h2');
@@ -475,7 +477,8 @@ showShounen.addEventListener('click', () => {
     div.classList.add('card');
 
     let img = document.createElement('img');
-    img.classList.add('sel-img');
+    // img.classList.add('sel-img');
+    img.classList.add('otherImg');
     img.src = product.image;
 
     let h2 = document.createElement('h2');
@@ -597,7 +600,8 @@ showShoujo.addEventListener('click', () => {
     div.classList.add('card');
 
     let img = document.createElement('img');
-    img.classList.add('sel-img');
+    // img.classList.add('sel-img');
+    img.classList.add('otherImg');
     img.src = product.image;
 
     let h2 = document.createElement('h2');
@@ -719,7 +723,8 @@ showSeinen.addEventListener('click', () => {
     div.classList.add('card');
 
     let img = document.createElement('img');
-    img.classList.add('sel-img');
+    // img.classList.add('sel-img');
+    img.classList.add('otherImg');
     img.src = product.image;
 
     let h2 = document.createElement('h2');
@@ -842,7 +847,8 @@ showJosei.addEventListener('click', () => {
     div.classList.add('card');
 
     let img = document.createElement('img');
-    img.classList.add('sel-img');
+    // img.classList.add('sel-img');
+    img.classList.add('otherImg');
     img.src = product.image;
 
     let h2 = document.createElement('h2');

@@ -71,8 +71,6 @@ body {
   white-space: nowrap;
 }
 
-
-
 .nav-options {
   display: flex;
   text-decoration: none;
@@ -223,8 +221,6 @@ a:active {
   gap: 5px;
 }
 
-
-
 /*Selection Full Page  */
 .selection {
   display: flex;
@@ -237,8 +233,7 @@ a:active {
   border-bottom: 2px solid black;
 }
 
-
-.filter{
+.filter {
   position: absolute; /* Takes the div out of normal layout flow */
   top: 5;
   left: 0;
@@ -246,7 +241,6 @@ a:active {
   /* padding: 15px;
   gap: 50px;  */
 }
-
 
 .grid {
   display: grid;
@@ -290,6 +284,14 @@ a:active {
   object-fit: fill;
 }
 
+.otherImg {
+  display: flex;
+  margin: auto;
+  inline-size: 300px;
+  height: 25rem;
+  width: 15rem;
+}
+
 #view {
   display: flex;
   align-items: center;
@@ -297,7 +299,7 @@ a:active {
   background-color: var(--logo-color);
 }
 
-.moreButtons{
+.moreButtons {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -305,7 +307,7 @@ a:active {
 }
 
 .quick {
-  display: none;        /* Initial state hidden */
+  display: none; /* Initial state hidden */
   position: fixed;
   top: 0;
   left: 0;
@@ -313,15 +315,15 @@ a:active {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6); /* Translucent backdrop overlay tint */
   z-index: 9999;
-  
+
   /* Flexbox settings to cleanly center dynamic text injections */
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: white;         /* Ensures readability against the dark overlay background */
+  color: white; /* Ensures readability against the dark overlay background */
 }
 
-#view:hover{
+#view:hover {
   background-color: white;
   color: black;
 }
@@ -415,23 +417,40 @@ input[type="submit"]:hover {
   height: 500px;
 }
 
-
-
 .social {
   display: grid;
   text-decoration: none;
 }
 
 /* Cart Page */
-.cart{
+.cart {
   border: 2px solid black;
 }
-.inCart{
-  border: 2px solid black;
+.inCart {
+  /* border: 2px solid black; */
 }
-.items{
+.block {
+  /* border: 2px solid black; */
+  gap: 100px;
+  border-radius: 50px;
+  border: 1px solid black;
+}
+.toCartBtn {
+  border-radius: 6px;
+  color: white;
+  background-color: var(--logo-color);
+  border: 0.5px solid black;
+  padding: 15px;
+}
+.items {
   display: block;
+  justify-content: space-evenly;
   flex-direction: row;
+}
+
+.rmBtn {
+  border-radius: 50px;
+  padding: 15px;
 }
 
 /* ----------------------------------------------------------------------------------------------- */
@@ -614,10 +633,13 @@ input[type="submit"]:hover {
 
   .card {
     position: fixed;
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     width: fit-content;
     padding: 25px;
-    transform: scale(.9);
+    transform: scale(0.9);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
 
@@ -628,7 +650,14 @@ input[type="submit"]:hover {
   .sel-img {
     height: 100%;
     width: 100%;
+    /* aspect-ratio: 2/4;
+    object-fit: fill; */
   }
+
+  /* .otherImg {
+    height: 25rem;
+    width: 15rem;
+  } */
 
   .card img {
     display: block;

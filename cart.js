@@ -14,11 +14,12 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     cart.forEach((item, index) => {
       const div = document.createElement("div");
-      div.classList.add("cart-item");
+      div.classList.add("block");
       div.textContent = `${item.name} - $${item.price}`;
       
       // Optional: Add a quick delete button for convenience
       const removeBtn = document.createElement("button");
+      removeBtn.classList.add('rmBtn');
       removeBtn.textContent = "Remove";
       removeBtn.style.marginLeft = "10px";
       removeBtn.addEventListener("click", () => {
