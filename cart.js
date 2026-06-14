@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const productImg =  document.createElement('img');
       productImg.src = item.image;
 
-
       const removeBtn = document.createElement("button");
       removeBtn.classList.add('rmBtn');
       removeBtn.textContent = "Remove";
@@ -34,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("cart", JSON.stringify(cart));
         window.location.reload(); // Refresh cart UI
       });
+
 
       
       
