@@ -106,7 +106,7 @@ h2 {
   justify-content: center;
 }
 
-h2 + p {
+h2+p {
   display: flex;
   justify-content: center;
 }
@@ -209,6 +209,7 @@ a:active {
   padding: 2px 4px;
   background-color: transparent;
 }
+
 #email {
   padding: 2px;
   height: 2px 4px;
@@ -234,7 +235,8 @@ a:active {
 }
 
 .filter {
-  position: absolute; /* Takes the div out of normal layout flow */
+  position: absolute;
+  /* Takes the div out of normal layout flow */
   top: 5;
   left: 0;
   z-index: 10;
@@ -264,6 +266,7 @@ a:active {
 .card:hover {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15) !important;
 }
+
 .card-title {
   text-align: center;
 }
@@ -274,6 +277,48 @@ a:active {
 
 .card-description {
   font-size: 23.5px;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* modal.style.backgroundColor = '#fff';
+    modal.style.padding = '30px';
+    modal.style.borderRadius = '10px';
+    modal.style.textAlign = 'center';
+    modal.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+    modal.style.maxWidth = '400px';
+    modal.style.width = '100%'; */
+
+.xmodal {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  width: 100%;
+}
+
+
+.aCloseButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
 }
 
 .sel-img {
@@ -307,20 +352,23 @@ a:active {
 }
 
 .quick {
-  display: none; /* Initial state hidden */
+  display: none;
+  /* Initial state hidden */
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6); /* Translucent backdrop overlay tint */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Translucent backdrop overlay tint */
   z-index: 9999;
 
   /* Flexbox settings to cleanly center dynamic text injections */
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  color: white; /* Ensures readability against the dark overlay background */
+  color: white;
+  /* Ensures readability against the dark overlay background */
 }
 
 #view:hover {
@@ -329,7 +377,8 @@ a:active {
 }
 
 .star-rating i {
-  color: #ffc107; /* Gold stars */
+  color: #ffc107;
+  /* Gold stars */
   font-size: 1rem;
 }
 
@@ -338,6 +387,7 @@ a:active {
   font-weight: 700;
   font-size: 45px;
 }
+
 /**/
 
 /* About Full Page */
@@ -373,11 +423,13 @@ a:active {
 .contact-header {
   text-align: center;
 }
+
 .contact-form {
   border: 2px solid black;
   padding: 20px;
   transform: scale(0.99);
 }
+
 /* Found this in W3schools */
 input[type="text"],
 input[type="email"],
@@ -402,10 +454,12 @@ input[type="submit"] {
   border-radius: 4px;
   cursor: pointer;
 }
+
 input[type="submit"]:hover {
   color: black;
   background-color: white;
 }
+
 .end-contact {
   background-color: var(--primary-color);
   display: grid;
@@ -423,18 +477,24 @@ input[type="submit"]:hover {
 }
 
 /* Cart Page */
-.cart {
-  border: 2px solid black;
-}
-.inCart {
-  /* border: 2px solid black; */
-}
+
+
 .block {
-  /* border: 2px solid black; */
+  border: 2px solid black;
+  padding: 16px;
+  margin: 3vw;
   gap: 100px;
-  border-radius: 50px;
-  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; /* Optional: adds a little breathing room inside the row */
+  border-bottom: 1px solid #eee;
+  /* border-radius: 50px; */
+
 }
+
+
+
 .toCartBtn {
   border-radius: 6px;
   color: white;
@@ -442,13 +502,20 @@ input[type="submit"]:hover {
   border: 0.5px solid black;
   padding: 15px;
 }
+
 .items {
   display: block;
   justify-content: space-evenly;
   flex-direction: row;
 }
 
+.productCard {
+  display: flex;
+  justify-content: center;
+}
+
 .rmBtn {
+  margin-left: auto;
   border-radius: 50px;
   padding: 15px;
 }
@@ -458,6 +525,7 @@ input[type="submit"]:hover {
 /* Web Responsivness*/
 
 @media (max-width: 992px) {
+
   /* Index/Homepage Mobile */
   .homepage-header {
     display: flex;
@@ -534,7 +602,7 @@ input[type="submit"]:hover {
     justify-content: center;
   }
 
-  h2 + p {
+  h2+p {
     display: flex;
     justify-content: center;
   }
@@ -620,9 +688,11 @@ input[type="submit"]:hover {
     display: flex;
     margin: auto;
   }
+
   .selection-header {
     font-size: 50px;
   }
+
   .grid {
     display: block;
     margin: 0 auto;
@@ -668,15 +738,19 @@ input[type="submit"]:hover {
   .card-title {
     font-size: 35px;
   }
+
   .star-rating {
     font-size: 25px;
   }
+
   .card-description {
     font-size: 1rem;
   }
+
   .price {
     font-size: 15.5px;
   }
+
   #view {
     display: block;
     margin: auto;
@@ -699,6 +773,7 @@ input[type="submit"]:hover {
     display: inline-block;
     width: auto;
   }
+
   .end-about {
     background-color: var(--primary-color);
     display: grid;
@@ -720,6 +795,7 @@ input[type="submit"]:hover {
     border-radius: 4px;
     box-sizing: border-box;
   }
+
   input[type="submit"] {
     width: 100%;
     background-color: var(--logo-color);
@@ -730,19 +806,21 @@ input[type="submit"]:hover {
     border-radius: 4px;
     cursor: pointer;
   }
+
   input[type="submit"]:hover {
     color: black;
     background-color: white;
   }
 }
 
-@media (max-width <= 400px) {
+@media (max-width <=400px) {
   .homepage-header {
     display: flex;
     flex-direction: column;
     object-fit: cover;
     width: 100%;
   }
+
   .navbar-toggler {
     margin-left: auto;
     margin-top: -4px;
@@ -774,4 +852,3 @@ input[type="submit"]:hover {
     padding: 150px;
     margin-top: 50px;
   }
-}

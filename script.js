@@ -227,32 +227,25 @@ storeCatalog.forEach((product) => {
   // Modal is not working
   a.addEventListener('click', function () {
     const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100vw';
-    overlay.style.height = '100vh';
-    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.6)';
-    overlay.style.display = 'flex';
-    overlay.style.justifyContent = 'center';
-    overlay.style.alignItems = 'center';
-    overlay.style.zIndex = '1000';
+    overlay.classList.add('popup');
 
     const modal = document.createElement('div');
-    modal.style.backgroundColor = '#fff';
-    modal.style.padding = '30px';
-    modal.style.borderRadius = '10px';
-    modal.style.textAlign = 'center';
-    modal.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
-    modal.style.maxWidth = '400px';
-    modal.style.width = '100%';
+    // modal.style.backgroundColor = '#fff';
+    // modal.style.padding = '30px';
+    // modal.style.borderRadius = '10px';
+    // modal.style.textAlign = 'center';
+    // modal.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
+    // modal.style.maxWidth = '400px';
+    // modal.style.width = '100%'; 
+
+    modal.classList.add('xmodal');
 
     modalCatalog.forEach((minfo) => {
       let name = document.createElement('h2');
       let rating = document.createElement('p');
       let onGoing = document.createElement('p');
       if (minfo.id === product.id) {
-        name.textContent = "Title: " + minfo.title;
+        name.textContent = minfo.title;
         rating.textContent = "Rating: " + minfo.rating;
         onGoing.textContent = minfo.isOngoing === false ? `${minfo.id}: ${minfo.title} is completed` : `${minfo.id}: ${minfo.title} is still ongoing`;
       }
@@ -262,14 +255,9 @@ storeCatalog.forEach((product) => {
     });
 
     const closeBtn = document.createElement('button');
+    closeBtn.classList.add('aCloseButton');
     closeBtn.innerText = 'close';
-    closeBtn.style.marginTop = '20px';
-    closeBtn.style.padding = '10px 20px';
-    closeBtn.style.cursor = 'pointer';
-    closeBtn.style.backgroundColor = '#f44336';
-    closeBtn.style.color = 'white';
-    closeBtn.style.border = 'none';
-    closeBtn.style.borderRadius = '5px';
+    
 
 
     closeBtn.addEventListener('click', function () {
@@ -291,13 +279,6 @@ storeCatalog.forEach((product) => {
 
 
   });
-  // Doing local storage
-  // const toCart = document.createElement('button');
-  // toCart.textContent = 'Add to Cart';
-
-  // toCart.addEventListener('click', function () {
-  //   addToCart(product);
-  // });
   const toCart = document.createElement('button');
   toCart.classList.add('toCartBtn');
   toCart.textContent = 'Add to Cart';
