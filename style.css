@@ -292,13 +292,12 @@ a:active {
   z-index: 1000;
 }
 
-/* modal.style.backgroundColor = '#fff';
-    modal.style.padding = '30px';
-    modal.style.borderRadius = '10px';
-    modal.style.textAlign = 'center';
-    modal.style.boxShadow = '0 5px 15px rgba(0,0,0,0.3)';
-    modal.style.maxWidth = '400px';
-    modal.style.width = '100%'; */
+.mContainer{
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  /* border: 1px solid #888; */
+  width: 80%;
+}
 
 .xmodal {
   background-color: #fff;

@@ -93,7 +93,7 @@ const storeCatalog = [
     inStock: true
   },
   // Products on the front page
-  
+
 
 
 ];
@@ -232,6 +232,8 @@ function formGrid(storeProducts) {
 
 
       modal.classList.add('xmodal');
+      const modalContainer = document.createElement('div');
+      modalContainer.classList.add('mContainer');
 
       modalCatalog.forEach((minfo) => {
         let name = document.createElement('h2');
@@ -240,12 +242,13 @@ function formGrid(storeProducts) {
         if (minfo.id === product.id) {
           name.textContent = minfo.title;
           rating.textContent = "Rating: " + minfo.rating;
-          onGoing.textContent = minfo.isOngoing === false ? `${minfo.id}: ${minfo.title} is completed` : `${minfo.id}: ${minfo.title} is still ongoing`;
+          onGoing.textContent = minfo.isOngoing === false ? `${minfo.id}: ${minfo.title} is completed` : `${minfo.title} is still ongoing`;
         }
 
-        modal.append(name, rating, onGoing);
-
+        modalContainer.append(name,rating,onGoing)
+        
       });
+      modal.append(modalContainer);
 
       const closeBtn = document.createElement('button');
       closeBtn.classList.add('aCloseButton');
