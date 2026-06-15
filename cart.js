@@ -1,3 +1,4 @@
+// DOMContentLoaded is a web browser event that fires when the initial HTML document is completely parsed and the DOM tree is built
 document.addEventListener("DOMContentLoaded", () => {
   const itemsList = document.querySelector("#items");
   const cartCountBadge = document.querySelector("#cart-count");

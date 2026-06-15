@@ -115,23 +115,6 @@ const modalCatalog =
 //Cart data, user theme flags, or session logs successfully persist between browser refreshes by leveraging localStorage.setItem and data translation handling via JSON.stringify() / JSON.parse().
 
 
-function addToCart(product) {
-  let cart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  cart.push(product);
-
-  localStorage.setItem("cart", JSON.stringify(cart));
-  const items = document.getElementById('items');
-  let listedItems = document.createElement('li');
-
-  listedItems = product;
-
-  items.appendChild(listedItems);
-
-
-  console.log("Added to cart:", product);
-  window.location.pathname = 'cart.html';
-}
 
 function updateCartUI() {
   const itemsList = document.querySelector("#items");
