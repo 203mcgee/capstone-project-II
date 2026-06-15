@@ -170,13 +170,14 @@ function handleAddToCart(product) {
   window.location.href = "cart.html";
 }
 
-storeCatalog.forEach((product) => { })
+// storeCatalog.forEach((product) => { })
 
 
 
 // https://medium.com/@jenniferehodge1/create-cards-dynamicallyin-javascript-ac46c5eb2296
 
 
+// // Made this for each to be able to get into the array and access the objects
 function formGrid(storeProducts) {
   // Made this grid to push all the elements into
   let grid = document.getElementById('product-grid');
@@ -305,117 +306,6 @@ formGrid(storeCatalog);
 
 
 
-// // Made this for each to be able to get into the array and access the objects
-// storeCatalog.forEach((product) => {
-
-//   let div = document.createElement('div');
-//   div.classList.add('card');
-
-//   let img = document.createElement('img');
-//   img.classList.add('otherImg');
-//   img.src = product.image;
-
-//   let h2 = document.createElement('h2');
-//   h2.classList.add('card-title');
-//   h2.textContent = product.name;
-
-//   let h4 = document.createElement('h4');
-//   h4.classList.add('star-rating');
-
-//   h4.innerHTML = 'Star Rating: ';
-
-
-//   for (let x = 0; x < product.starRating; x++) {
-//     h4.innerHTML += '<i class="fa-solid fa-star"></i> '
-//   }
-
-//   let p = document.createElement('p');
-
-//   p.textContent = product.description;
-//   let p2 = document.createElement('p');
-//   p2.textContent = "Price: $" + product.price;
-
-
-
-//   const a = document.createElement('button');
-
-//   a.id = 'view';
-//   a.setAttribute('data-id', product.id);
-//   a.classList.add('btn', 'btn-primary', 'active', 'view-btn');
-//   a.innerHTML = 'Quick View';
-
-
-
-//   a.addEventListener('click', function () {
-//     const overlay = document.createElement('div');
-//     overlay.classList.add('popup');
-
-//     const modal = document.createElement('div');
-
-
-//     modal.classList.add('xmodal');
-
-//     modalCatalog.forEach((minfo) => {
-//       let name = document.createElement('h2');
-//       let rating = document.createElement('p');
-//       let onGoing = document.createElement('p');
-//       if (minfo.id === product.id) {
-//         name.textContent = minfo.title;
-//         rating.textContent = "Rating: " + minfo.rating;
-//         onGoing.textContent = minfo.isOngoing === false ? `${minfo.id}: ${minfo.title} is completed` : `${minfo.id}: ${minfo.title} is still ongoing`;
-//       }
-
-//       modal.append(name, rating, onGoing);
-
-//     });
-
-//     const closeBtn = document.createElement('button');
-//     closeBtn.classList.add('aCloseButton');
-//     closeBtn.innerText = 'close';
-
-
-
-//     closeBtn.addEventListener('click', function () {
-//       document.body.removeChild(overlay);
-//     });
-
-//     overlay.addEventListener('click', (e) => {
-//       if (e.overlay === overlay) {
-//         document.body.removeChild(overlay);
-//       }
-//     });
-
-//     // modal.appendChild();
-//     modal.appendChild(closeBtn);
-//     overlay.appendChild(modal);
-
-//     document.body.appendChild(overlay);
-
-
-
-//   });
-//   const toCart = document.createElement('button');
-//   toCart.classList.add('toCartBtn');
-//   toCart.textContent = 'Add to Cart';
-//   toCart.addEventListener('click', function () {
-//     handleAddToCart(product);
-
-//     // Call our updated state management function
-
-//   });
-
-
-
-
-
-//   const container = document.createElement('div');
-//   container.append(toCart, a)
-
-
-
-//   div.append(img, h2, h4, p, p2, container);
-//   grid.append(div);
-// });
 
 
 
