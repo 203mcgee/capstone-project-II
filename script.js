@@ -116,25 +116,6 @@ const modalCatalog =
 
 
 
-function updateCartUI() {
-  const itemsList = document.querySelector("#items");
-  if (!itemsList) return; // Guard clause in case element doesn't exist yet
-
-  const currentCart = JSON.parse(localStorage.getItem("cart")) || [];
-
-  // Clear out the old list first
-  itemsList.innerHTML = "";
-
-  if (currentCart.length === 0) {
-    itemsList.innerHTML = "<p>Cart is empty</p>";
-  } else {
-    currentCart.forEach(item => {
-      const div = document.createElement("div");
-      div.textContent = `${item.name} - $${item.price}`;
-      itemsList.appendChild(div);
-    });
-  }
-}
 
 // Intercept your original function to make sure the UI refreshes instantly when clicked
 function handleAddToCart(product) {
